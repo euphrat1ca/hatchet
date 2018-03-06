@@ -49,7 +49,7 @@ Hatchet VS2005完整源码
 	SHA1: A1B598CB4EB47554E6F191A7EB33111F462C77FD
 	CRC32: C094BD42
 
-、、、
+```cpp
 	/*
 		[Header]
 		User-Agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)
@@ -80,7 +80,7 @@ Hatchet VS2005完整源码
 		%nPageCode% 为程序需要处理的编码，请保留
 		%szBase64EvalCode% 为程序需要处理的执行代码，请保留
 	*/
-、、、
+```
 ------------------------------------------------------------
 2013.12.03
 *	本地数据库单引号
