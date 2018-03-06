@@ -1,6 +1,4 @@
-﻿来源:由[WWW.PHPINFO.CC]博客整理
-
-免责申明：
+﻿免责申明：
 	请使用者注意使用环境并遵守国家相关法律法规！
 	由于使用不当造成的后果本厂家不承担任何责任！
 ------------------------------------------------------------
@@ -19,9 +17,11 @@
 	快捷键操作
 	注册表读取
 	HTTP头自行控制
+	Join(只支持PHP语言的CMD功能和自定义代码功能)
+	一句话地址URL随机伪造
 	POST部分数据可自定义，突破安全狗等WAF(一句话需自行处理)
 	PHP Warning 警告去除，避免某些WAF等记录
-	PHP支持多种执行命令，安全模式也能执行
+	PHP支持多种执行命令:system,passthru,shell_exec,exec,proc_open,popen,COM
 	PHP管理PostgreSQL、ODBC_MSSQL、PDO_MYSQL、PDO_MSSQL数据库
 	HTTP代理，只完成PHP。支持HTTP[S] GET POST
 	文件夹双击进入，树形框的上一层可以点击
@@ -41,13 +41,54 @@
 后门：
 	缩小体积已加UPX壳
 	绝无有意添加的后门，但三流的业余技能不排除被远程溢出的BUG
-	文件: C:\Projects\Hatchet\release\Hatchet.exe
-	大小: 269312 字节
+	文件: C:\Projects\Hatchet_v2\release\Hatchet.exe
+	大小: 271872 字节
 	文件版本: 1.0.0.1
-	修改时间: 2014年8月26日, 12:19:43
-	MD5: 91FAA43F3F89083F2E9C78D05E13673C
-	SHA1: A1B598CB4EB47554E6F191A7EB33111F462C77FD
-	CRC32: C094BD42
+	修改时间: 2014年11月20日, 10:28:05
+	MD5: 26C086F13C9C7D26D7B8BFAF6F7F63B4
+	SHA1: 89F2AFE69523FD88EFE55ED0E815A40C9395B34C
+	CRC32: A107ADFC
+
+快捷键：
+	SHELL：
+		INSERT	添加SHELL
+		DELETE	删除SHELL (在列表框上)
+		RETURN	编辑SHELL (在列表框上)
+		CTRL+F	搜索
+		CTRL+C	复制SHELL (在列表框上)
+	
+	CMD：
+		CTRL+A	全选
+		CTRL+C	复制
+		CTRL+V	粘贴
+		VK_UP	上一条命令
+		VK_DOWN	下一条命令
+	
+	DATA：
+		CTRL+C	复制 (在树形框上)
+		CTRL+C	复制 (在列表框上)
+		F2		数据库配置
+	
+	EVALCODE：
+		CTRL+A	全选
+		F5		执行
+	
+	FILE：
+		VK_BACK	退格，返回上一层
+		F5		刷新
+		F2		重命名 (在列表框上)
+		DELETE	多选，删除文件 (在列表框上)
+		CTRL+C	复制文件 (在列表框上)
+		CTRL+X	剪切文件 (在列表框上)
+		CTRL+V	粘贴文件 (在列表框上)
+	
+	FILESAVE：
+		CTRL+F	搜索
+		CTRL+A	全选
+		CTRL+S	保存
+	
+	REGISTRY：
+		F5		刷新
 
 /*
 	[Header]
@@ -68,6 +109,13 @@
 
 	PHP_POST_Z0_DATA=@ini_set("display_errors","0");@set_time_limit(0);@set_magic_quotes_runtime(0);
 	[/POST]
+	[RandType]
+	article
+	news
+	type
+	index
+	view
+	[/RandType]
 
 	##################################################
 	#以下是说明
@@ -78,9 +126,15 @@
 	[POST]里为POST的部分数据，可自行变异这段代码，过安全狗等，很灵活的哦～
 	%nPageCode% 为程序需要处理的编码，请保留
 	%szBase64EvalCode% 为程序需要处理的执行代码，请保留
+	[RandType]里为伪造随机URL的列表，格式如：?/article/666666.html
+	如果没有数据则不使用，建议多加一些
+	默认(是指没有INI配置文件的情况下)如上内容
 */
 
 ------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+
 2013.12.03
 *	本地数据库单引号
 *	CMD选择所有，任意键覆盖
@@ -296,3 +350,32 @@
 +	Data Ctrl+C和F2快捷键
 *	修正ComboBox下拉高度
 +	添加Shell判断是否存在
+
+2014.09.22
+*	数据库名，可手动填入。防止数据库列不出来
++	下载目录，新开线程
++	增加PHP执行命令的函数
+*	修正文件管理的属性排列
+*	修正文件管理的地址显示
++	增加文件管理返回上一层按钮，快捷键：退格键
+
+2014.09.25
+*	修正PHP执行命令popen的问题
+*	修正文件管理焦点在列表框
++	只允许运行一个程序
+
+2014.11.13
++	增加Join：使用某个Shell代理管理Shell（仅支持PHP语言的CMD功能）
+*	修正效率bIsExistItem
+*	修正CMD换行的问题
+*	修正文件管理访问共享路径的问题（感谢B1uH4ck）
+
+
++	增加地址URL随机伪造
++	增加Join：使用某个Shell代理管理Shell（支持PHP语言的自定义代码功能）
+*	修正 \\ => \
+*	修正带有参数的URL，随机URL失败
+*	修正效率bIsExistItem的BUG
++	增加地址URL随机伪造排除的HOST
+*	修正FindString	=> FindStringExact
+*	修正ComboBox下拉高度
